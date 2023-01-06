@@ -25,6 +25,10 @@ public class Complaint {
     @Column(name="ownerID")
     private int ownerID;
 
+    // 0 inactive 1 active
+    @Column(name="state")
+    private int state;
+
 
     public int getID() {
         return ID;
@@ -74,6 +78,11 @@ public class Complaint {
         this.ownerID = ownerID;
     }
 
+    public int getState() {
+        return state;
+    }
 
-
+    public void setState(int state) {
+        this.state = state;
+    }
 }
