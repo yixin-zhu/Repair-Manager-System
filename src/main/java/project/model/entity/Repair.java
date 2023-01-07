@@ -25,6 +25,17 @@ public class Repair {
     @Column(name="state")
     private int state;
 
+    public Repair(){
+
+    }
+    public Repair(String time, String content, int ownerID, String origin, int state) {
+        this.time = time;
+        this.content = content;
+        this.ownerID = ownerID;
+        this.origin = origin;
+        this.state = state;
+    }
+
     public int getID() {
         return ID;
     }

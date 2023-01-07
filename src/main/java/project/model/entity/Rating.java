@@ -1,10 +1,9 @@
 package project.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name="rating")
 public class Rating {
 
     @Id
@@ -22,6 +21,17 @@ public class Rating {
 
     @Column(name="satisfation")
     private int satisfation;
+
+    public Rating(){
+
+    }
+
+    public Rating(int repairID, int inTime, int score, int satisfation) {
+        this.repairID = repairID;
+        this.inTime = inTime;
+        this.score = score;
+        this.satisfation = satisfation;
+    }
 
     public int getRepairID() {
         return repairID;

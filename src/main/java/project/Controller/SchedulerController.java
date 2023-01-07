@@ -1,6 +1,7 @@
 package project.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import project.Service.ComplaintService;
 import project.Service.DispatchService;
@@ -9,7 +10,7 @@ import project.model.people.Worker;
 
 import java.util.List;
 
-@RestController
+@Service
 public class SchedulerController {
     @Autowired
     DispatchService dispatchService;
@@ -56,6 +57,10 @@ public class SchedulerController {
 
     public List<Worker> showFreeWorkersInfo(){
         return dispatchService.getWorkerByState(0);
+    }
+
+    public List<Worker> showWorkersInfoBySkill(int fault){
+        return dispatchService.getWorkerBySkill(fault);
     }
 
     public List<Complaint> showMyCompliant(int schedulerID){

@@ -1,10 +1,9 @@
 package project.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name="report")
 public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +12,6 @@ public class Report {
     @Column(name="complaintID")
     private int complaintID;
 
-    @Column(name="time")
-    private String time;
+    @Column(name="content")
+    private String content;
 }

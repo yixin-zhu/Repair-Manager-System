@@ -5,10 +5,13 @@ import org.springframework.stereotype.Component;
 import project.model.entity.Rating;
 import project.model.people.Worker;
 
+import java.util.Collection;
 import java.util.List;
 
 @Component
 public interface WorkerRepo extends JpaRepository<Worker, Integer> {
 
     public List<Worker> findByState(int i);
+
+    List<Worker> findByID(int workerID);
 }

@@ -1,6 +1,7 @@
 package project.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import project.Service.ComplaintService;
 import project.Service.DispatchService;
@@ -10,7 +11,7 @@ import project.model.entity.Repair;
 
 import java.util.List;
 
-@RestController
+@Service
 public class OwnerController {
     @Autowired
     DispatchService dispatchService;

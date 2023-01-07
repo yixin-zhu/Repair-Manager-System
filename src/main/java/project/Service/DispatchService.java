@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.Repo.entity.*;
 import project.Repo.people.WorkerRepo;
+import project.Repo.relation.SkillRepo;
 import project.model.entity.*;
 import project.model.people.Worker;
+import project.model.relation.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,9 @@ public class DispatchService {
     @Autowired
     RatingRepo ratingRepo;
 
+    @Autowired
+    SkillRepo skillRepo;
+
     public Repair insertRepair(Repair r){
         return repairRepo.save(r);
     }
@@ -43,7 +48,7 @@ public class DispatchService {
     }
 
     public Repair updateRepairState(int repairID, int newState) {
-        Repair repair = repairRepo.getById(repairID);
+        Repair repair = repairRepo.getOne(repairID);
         repair.setState(newState);
         return repairRepo.save(repair);
     }
@@ -92,5 +97,14 @@ public class DispatchService {
 
     public List<Repair> getRepairByOwner(int ownerID) {
         return repairRepo.findByOwnerID(ownerID);
+    }
+
+    public List<Worker> getWorkerBySkill(int fault) {
+        List<Skill> skills = skillRepo.findByFaultID(fault);
+        List<Worker> ans = new ArrayList<>();
+        for(Skill s : skills){
+            ans.addAll(workerRepo.findByID(s.getWorkerID()));
+        }
+        return ans;
     }
 }

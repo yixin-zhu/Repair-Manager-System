@@ -1,11 +1,10 @@
 package project.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name="log")
 public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +24,18 @@ public class Log {
 
     @Column(name="comment")
     private String comment;
+
+    public Log(){
+
+    }
+
+    public Log(int dispatchID, Timestamp beginTime, Timestamp endTime, int hours, String comment) {
+        this.dispatchID = dispatchID;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
+        this.hours = hours;
+        this.comment = comment;
+    }
 
     public int getID() {
         return ID;
