@@ -28,6 +28,18 @@ public class Complaint {
     @Column(name="state")
     private int state;
 
+    public Complaint(){
+
+    }
+
+    public Complaint(int repairID, String content, String time, String result, int ownerID, int state) {
+        this.repairID = repairID;
+        this.content = content;
+        this.time = time;
+        this.result = result;
+        this.ownerID = ownerID;
+        this.state = state;
+    }
 
     public int getID() {
         return ID;

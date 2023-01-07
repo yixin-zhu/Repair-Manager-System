@@ -1,4 +1,4 @@
-package A;
+package basic;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(classes = SpringBootApp.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestNormalProcess {
-    private static int repairID = 6;
+    private static int repairID = 101; // any number here is ok
 
-    private static int dispatchID = 7;
+    private static int dispatchID = 102; // any number here is ok
 
     @Autowired
     SchedulerController schedulerController;
