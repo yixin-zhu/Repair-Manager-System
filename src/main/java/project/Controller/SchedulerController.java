@@ -32,10 +32,13 @@ public class SchedulerController {
     public Dispatch createDispatch(Dispatch dispatch){
         int repairID = dispatch.getRepairID();
         dispatchService.updateRepairState(repairID, 2);
+        dispatchService.updateWorkerState(dispatch.getWorkerID(), 1);
         return dispatchService.insertDispatch(dispatch);
     }
 
     public Dispatch closeDispatch(int dispatchID){
+        int workerID = dispatchService.findWorkerIDByDispatch(dispatchID);
+        dispatchService.updateWorkerState(workerID, 0);
         return dispatchService.updateDispatchState(dispatchID, 0);
     }
 

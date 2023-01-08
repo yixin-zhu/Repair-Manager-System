@@ -31,4 +31,12 @@ public class Worker {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

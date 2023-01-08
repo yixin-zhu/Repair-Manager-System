@@ -59,6 +59,12 @@ public class DispatchService {
         return dispatchRepo.save(dispatch);
     }
 
+    public Worker updateWorkerState(int workerID, int newState) {
+        Worker worker = workerRepo.getById(workerID);
+        worker.setState(newState);
+        return workerRepo.save(worker);
+    }
+
     public int getStateOfRepair(int repairID) {
         Repair repair = repairRepo.getById(repairID);
         return repair.getState();
@@ -106,5 +112,10 @@ public class DispatchService {
             ans.addAll(workerRepo.findByID(s.getWorkerID()));
         }
         return ans;
+    }
+
+    public int findWorkerIDByDispatch(int dispatchID) {
+        Dispatch dispatch = dispatchRepo.getById(dispatchID);
+        return dispatch.getWorkerID();
     }
 }
